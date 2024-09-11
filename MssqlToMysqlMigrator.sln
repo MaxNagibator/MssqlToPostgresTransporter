@@ -1,0 +1,41 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.757
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MssqlToMysqlMigrator", "MssqlToMysqlMigrator\MssqlToMysqlMigrator.csproj", "{65B73EEE-B734-436F-9A64-B263DCCA6966}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MssqlToMysqlMigratorConsole", "MssqlToMysqlMigratorConsole\MssqlToMysqlMigratorConsole.csproj", "{25FDA4B5-DDE0-424F-BC10-02B266845F64}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Debug|x86.ActiveCfg = Debug|x86
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Debug|x86.Build.0 = Debug|x86
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Release|x86.ActiveCfg = Release|x86
+		{65B73EEE-B734-436F-9A64-B263DCCA6966}.Release|x86.Build.0 = Release|x86
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Debug|x86.Build.0 = Debug|Any CPU
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Release|x86.ActiveCfg = Release|Any CPU
+		{25FDA4B5-DDE0-424F-BC10-02B266845F64}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {ADC969AA-5464-4505-9E8A-5FD2E0713BF6}
+	EndGlobalSection
+EndGlobal
