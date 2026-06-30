@@ -42,7 +42,7 @@
             this.uiShowInConsoleCheckBox = new System.Windows.Forms.CheckBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.uiCreateDbCheckBox = new System.Windows.Forms.CheckBox();
+            this.uiExecuteGeneratedScriptCheckBox = new System.Windows.Forms.CheckBox();
             this.button1 = new System.Windows.Forms.Button();
             this.uiDataLogCheckBox = new System.Windows.Forms.CheckBox();
             this.button2 = new System.Windows.Forms.Button();
@@ -192,16 +192,16 @@
             // 
             // uiCreateDbCheckBox
             // 
-            this.uiCreateDbCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.uiCreateDbCheckBox.AutoSize = true;
-            this.uiCreateDbCheckBox.Checked = true;
-            this.uiCreateDbCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.uiCreateDbCheckBox.Location = new System.Drawing.Point(722, 228);
-            this.uiCreateDbCheckBox.Name = "uiCreateDbCheckBox";
-            this.uiCreateDbCheckBox.Size = new System.Drawing.Size(120, 17);
-            this.uiCreateDbCheckBox.TabIndex = 13;
-            this.uiCreateDbCheckBox.Text = "Выполнить скрипт";
-            this.uiCreateDbCheckBox.UseVisualStyleBackColor = true;
+            this.uiExecuteGeneratedScriptCheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.uiExecuteGeneratedScriptCheckBox.AutoSize = true;
+            this.uiExecuteGeneratedScriptCheckBox.Checked = true;
+            this.uiExecuteGeneratedScriptCheckBox.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.uiExecuteGeneratedScriptCheckBox.Location = new System.Drawing.Point(722, 228);
+            this.uiExecuteGeneratedScriptCheckBox.Name = "uiCreateDbCheckBox";
+            this.uiExecuteGeneratedScriptCheckBox.Size = new System.Drawing.Size(120, 17);
+            this.uiExecuteGeneratedScriptCheckBox.TabIndex = 13;
+            this.uiExecuteGeneratedScriptCheckBox.Text = "Выполнить скрипт";
+            this.uiExecuteGeneratedScriptCheckBox.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
@@ -257,7 +257,7 @@
             this.Controls.Add(this.button2);
             this.Controls.Add(this.uiDataLogCheckBox);
             this.Controls.Add(this.button1);
-            this.Controls.Add(this.uiCreateDbCheckBox);
+            this.Controls.Add(this.uiExecuteGeneratedScriptCheckBox);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.uiShowInConsoleCheckBox);
@@ -295,7 +295,7 @@
         private System.Windows.Forms.CheckBox uiShowInConsoleCheckBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.CheckBox uiCreateDbCheckBox;
+        private System.Windows.Forms.CheckBox uiExecuteGeneratedScriptCheckBox;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.CheckBox uiDataLogCheckBox;
         private System.Windows.Forms.Button button2;

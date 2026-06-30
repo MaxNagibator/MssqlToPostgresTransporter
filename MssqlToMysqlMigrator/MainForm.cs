@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace MssqlToMysqlMigrator
@@ -30,10 +31,11 @@ namespace MssqlToMysqlMigrator
             uiTableCheckBox.Checked = false;
             uiViewCheckBox.Checked = true;
             uiFkCheckBox.Checked = false;
+            uiViewCheckBox.Checked = false;
             uiDataCheckBox.Checked = false;
             uiDataLogCheckBox.Checked = false;
             uiShowInConsoleCheckBox.Checked = true;
-            uiCreateDbCheckBox.Checked = false;
+            uiExecuteGeneratedScriptCheckBox.Checked = false;
         }
 
         public void SetParameters(string mssql, string postgre, bool structure, bool table, bool view, bool fk, bool data, bool dataLog, bool console, bool run)
@@ -48,7 +50,7 @@ namespace MssqlToMysqlMigrator
             uiDataCheckBox.Checked = data;
             uiDataLogCheckBox.Checked = dataLog;
             uiShowInConsoleCheckBox.Checked = console;
-            uiCreateDbCheckBox.Checked = run;
+            uiExecuteGeneratedScriptCheckBox.Checked = run;
         }
 
         public string GetLog()
@@ -1385,7 +1387,7 @@ $f$  LANGUAGE SQL IMMUTABLE;");
                 ConsoleWriteLine(createMySqlDbScript);
             }
 
-            if (uiCreateDbCheckBox.Checked)
+            if (uiExecuteGeneratedScriptCheckBox.Checked)
             {
                 label1.Text = "Создание mysqlDB";
                 using (var sqlProvider = new PostgreSqlProvider(mysqlCs))// : new MySqlProvider(mysqlCs)) ну вообще можно было в ООП но тяп ляп время деньги
@@ -1434,22 +1436,25 @@ $f$  LANGUAGE SQL IMMUTABLE;");
                             }
 
                             var offet = 0;
-                            if (isPostgress)
+                            if (uiExecuteGeneratedScriptCheckBox.Checked)
                             {
-                                mysqlProvider.ExecuteQuery($"SELECT 1 FROM {table.GetPostgresName()} LIMIT 1");
-                            }
-                            else
-                            {
-                                mysqlProvider.ExecuteQuery($"SELECT 1 FROM `{table.GetMysqlName()}` LIMIT 1");
-                            }
-                            if (mysqlProvider.Rows.Count > 0)
-                            {
-                                if (uiDataLogCheckBox.Checked)
+                                if (isPostgress)
                                 {
-                                    var insertTime2 = (DateTime.Now - d).TotalMilliseconds;
-                                    insertLogStrBuilder.AppendLine("-- Перенос данных\\" + table.FullName + ": " + insertTime2 + "ms <skip(target not empty)>");
+                                    mysqlProvider.ExecuteQuery($"SELECT 1 FROM {table.GetPostgresName()} LIMIT 1");
                                 }
-                                continue;
+                                else
+                                {
+                                    mysqlProvider.ExecuteQuery($"SELECT 1 FROM `{table.GetMysqlName()}` LIMIT 1");
+                                }
+                                if (mysqlProvider.Rows.Count > 0)
+                                {
+                                    if (uiDataLogCheckBox.Checked)
+                                    {
+                                        var insertTime2 = (DateTime.Now - d).TotalMilliseconds;
+                                        insertLogStrBuilder.AppendLine("-- Перенос данных\\" + table.FullName + ": " + insertTime2 + "ms <skip(target not empty)>");
+                                    }
+                                    continue;
+                                }
                             }
                             var empty = false;
                             while (true)
@@ -1531,18 +1536,24 @@ FETCH NEXT {parts} ROWS ONLY;");
                                         }
                                     }
                                     var query = strBuilder.ToString();
-                                    //ConsoleWriteLine(query);
-
-                                    try
+                                    if (uiShowInConsoleCheckBox.Checked)
                                     {
-                                        mysqlProvider.ExecuteNonQuery(query);
-                                    }
-                                    catch (Exception ex)
-                                    {
-                                        ConsoleWriteLine(insertLogStrBuilder.ToString());
-                                        ConsoleWriteLine("query: ");
                                         ConsoleWriteLine(query);
-                                        throw new Exception("insert into " + table.GetMysqlName() + " error: " + ex.Message, ex);
+                                    }
+
+                                    if (uiExecuteGeneratedScriptCheckBox.Checked)
+                                    {
+                                        try
+                                        {
+                                            mysqlProvider.ExecuteNonQuery(query);
+                                        }
+                                        catch (Exception ex)
+                                        {
+                                            ConsoleWriteLine(insertLogStrBuilder.ToString());
+                                            ConsoleWriteLine("query: ");
+                                            ConsoleWriteLine(query);
+                                            throw new Exception("insert into " + table.GetMysqlName() + " error: " + ex.Message, ex);
+                                        }
                                     }
                                 }
                                 else
