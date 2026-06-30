@@ -1535,6 +1535,7 @@ FETCH NEXT {parts} ROWS ONLY;");
                                             strBuilder.Append($"\r\n,({valuesStr})");
                                         }
                                     }
+                                    strBuilder.Append(';');
                                     var query = strBuilder.ToString();
                                     if (uiShowInConsoleCheckBox.Checked)
                                     {
